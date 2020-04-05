@@ -21,7 +21,6 @@
       <div :style="float">
         <slot></slot>
       </div>
-      <!-- <div v-html="copyHtml" :style="float"></div> -->
     </div>
   </div>
 </template>
@@ -36,7 +35,6 @@
         xPos: 0,
         yPos: 0,
         delay: 0,
-        copyHtml: '',
         height: 0,
         width: 0, // 外容器宽度
         realBoxWidth: 0, // 内容实际宽度
@@ -316,7 +314,6 @@
       _initMove () {
         this.$nextTick(() => {
           this._dataWarm(this.data)
-          this.copyHtml = '' //清空copy
           this.height = this.$refs.wrap.offsetHeight
           this.width = this.$refs.wrap.offsetWidth
           let slotListWidth = this.$refs.slotList.offsetWidth
@@ -339,7 +336,6 @@
           if (this.scrollSwitch) {
             let timer
             if (timer) clearTimeout(timer)
-            this.copyHtml = this.$refs.slotList.innerHTML
             setTimeout(() => {
               this.realBoxHeight = this.$refs.realBox.offsetHeight
               this._move()
